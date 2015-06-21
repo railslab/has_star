@@ -1,0 +1,11 @@
+one:
+  title: Post one
+  star: false
+
+two:
+  title: Post two
+  star: true
+
+three:
+  title: Post three
+  star: false

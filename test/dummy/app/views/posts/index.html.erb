@@ -1,0 +1,14 @@
+<%= link_to 'all', posts_path %>
+ |
+<%= link_to 'starred', starred_posts_path %>
+ |
+<%= link_to 'unstarred', unstarred_posts_path %>
+
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+    <%= toggle_star post %> |
+    <%= post.title %>
+  </li>
+  <% end %>
+</ul>

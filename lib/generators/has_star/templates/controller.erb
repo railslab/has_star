@@ -1,0 +1,16 @@
+
+  has_star
+
+  def resource
+    @<%= table_name.singularize %> = <%= model_class %>.find params[:id]
+  end
+
+  def starred
+    @<%= table_name %> = <%= model_class %>.starred
+    render :index
+  end
+
+  def unstarred
+    @<%= table_name %> = <%= model_class %>.unstarred
+    render :index
+  end

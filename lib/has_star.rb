@@ -1,6 +1,7 @@
-require 'has_star/model'
 require 'has_star/controller'
+require 'has_star/builder'
 require 'has_star/helper'
+require 'has_star/model'
 require 'has_star/route'
 
 module HasStar

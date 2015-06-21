@@ -9,8 +9,9 @@ module HasStar
 
     def render_star
       render inline: <<-EOF
-        $('#<%= dom_id(@has_star_resource, :toggle_star) %>')
-        .html('<%== @has_star_resource.star? ? '&#x2605;' : '&#9734;' %>')
+        <% builder = HasStar::Builder.new(@has_star_resource, self) %>
+        $('#<%= builder.id %>')
+        .html('<%= builder.content %>')
         .blur()
       EOF
     end

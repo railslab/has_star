@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-  has_star :resource
-  before_action -> { sleep 0.25 }, only: :toggle_star
+  has_star
 
   def resource
-    Post.find params[:id]
+    @post = Post.find params[:id]
   end
 
   def starred
@@ -15,6 +14,8 @@ class PostsController < ApplicationController
     @posts = Post.unstarred
     render :index
   end
+
+  before_action -> { sleep 0.5 }, only: :toggle_star
 
   def index
     @posts = Post.all

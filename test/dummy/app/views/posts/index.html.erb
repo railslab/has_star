@@ -7,7 +7,7 @@
 <ul>
   <% @posts.each do |post| %>
   <li>
-    <%= toggle_star post %> |
+    <%= has_star post %> |
     <%= post.title %>
   </li>
   <% end %>

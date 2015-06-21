@@ -10,24 +10,40 @@ class HasStarGenerator < Rails::Generators::NamedBase
   end
 
   def add_has_star_to_model
-    file = model_file
-    return say("File not found: #{file}", :magenta) unless File.exist? file
-    insert_into_file file, "\n  has_star", after: 'ActiveRecord::Base'
+    with_file model_file do |file|
+      insert_into_file file, "\n  has_star", after: 'ActiveRecord::Base'
+    end
   end
 
   def add_has_star_to_controller
-    file = controller_file
-    return say("File not found: #{file}", :magenta) unless File.exist? file
-    insert_into_file file, "\n  has_star", after: /class .+$/
+    with_file controller_file do |file|
+      insert_into_file file, render_template('controller.erb'), after: /class .+$/
+    end
   end
 
   def add_has_star_to_routes
-    file = 'config/routes.rb'
-    return say("File not found: #{file}", :magenta) unless File.exist? file
-    insert_into_file file, "\n  has_star :#{table_name}", after: 'Rails.application.routes.draw do'
+    with_file 'config/routes.rb' do |file|
+      insert_into_file file, "\n  has_star :#{table_name}", after: 'Rails.application.routes.draw do'
+    end
+  end
+
+  def add_has_star_to_css
+    with_file 'app/assets/stylesheets/application.css' do |file|
+      insert_into_file file, " *= require has_star\n", before: ' *= require_tree'
+    end
   end
 
   private
+
+  def render_template(name)
+    template = File.expand_path(find_in_source_paths(name))
+    ERB.new(::File.binread(template), nil, "-", "@output_buffer").result(instance_eval("binding"))
+  end
+
+  def with_file(file, &block)
+    return say("File not found: #{file}", :magenta) unless File.exist? Rails.root.join(file)
+    yield file
+  end
 
   # convert the name from commandline like:
   # rails g has_star posts
@@ -36,6 +52,10 @@ class HasStarGenerator < Rails::Generators::NamedBase
   # to posts
   def table_name
     name.tableize
+  end
+
+  def model_class
+    table_name.classify
   end
 
   def model_file

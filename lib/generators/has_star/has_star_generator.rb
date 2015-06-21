@@ -11,19 +11,19 @@ class HasStarGenerator < Rails::Generators::NamedBase
 
   def add_has_star_to_model
     file = model_file
-    return say("File not found: #{'config/routes.rb'}") unless File.exist? file
+    return say("File not found: #{file}", :magenta) unless File.exist? file
     insert_into_file file, "\n  has_star", after: 'ActiveRecord::Base'
   end
 
   def add_has_star_to_controller
     file = controller_file
-    return say("File not found: #{'config/routes.rb'}") unless File.exist? file
+    return say("File not found: #{file}", :magenta) unless File.exist? file
     insert_into_file file, "\n  has_star", after: /class .+$/
   end
 
   def add_has_star_to_routes
     file = 'config/routes.rb'
-    return say("File not found: #{'config/routes.rb'}") unless File.exist? file
+    return say("File not found: #{file}", :magenta) unless File.exist? file
     insert_into_file file, "\n  has_star :#{table_name}", after: 'Rails.application.routes.draw do'
   end
 

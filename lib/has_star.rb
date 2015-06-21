@@ -4,6 +4,11 @@ require 'has_star/helper'
 require 'has_star/route'
 
 module HasStar
+  module Rails
+    class Engine < ::Rails::Engine
+    end
+  end
+
   module ActiveRecord
     def has_star
       include Model

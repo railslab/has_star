@@ -10,7 +10,8 @@ module HasStar
     def render_star
       render inline: <<-EOF
         $('#<%= dom_id(@has_star_resource, :toggle_star) %>')
-        .html('<%= toggle_star(@has_star_resource) %>')
+        .html('<%== @has_star_resource.star? ? '&#x2605;' : '&#9734;' %>')
+        .blur()
       EOF
     end
 

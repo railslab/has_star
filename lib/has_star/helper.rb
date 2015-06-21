@@ -5,6 +5,7 @@ module HasStar
               [:toggle_star, model],
               method: :patch,
               remote: true,
+              # data: {disable_with: '<span class="toggle-star-loading">&#8635;</span>'},
               id: dom_id(model, :toggle_star),
               class: 'toggle-star'
     end

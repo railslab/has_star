@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   has_star :resource
+  before_action -> { sleep 0.25 }, only: :toggle_star
 
   def resource
     Post.find params[:id]

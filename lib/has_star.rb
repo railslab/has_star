@@ -13,14 +13,14 @@ module HasStar
   module ActionController
     attr_accessor :has_star_resource_method
 
-    def has_star(resource_method)
+    def has_star(resource_method = :resource)
       self.has_star_resource_method = resource_method
       include Controller
     end
   end
 end
 
-ActiveRecord::Base.send     :extend, HasStar::ActiveRecord
-ActionController::Base.send :extend, HasStar::ActionController
-ActionView::Base.send       :include, HasStar::Helper
+ActiveRecord::Base.send              :extend,  HasStar::ActiveRecord
+ActionController::Base.send          :extend,  HasStar::ActionController
+ActionView::Base.send                :include, HasStar::Helper
 ActionDispatch::Routing::Mapper.send :include, HasStar::Route

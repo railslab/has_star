@@ -1,0 +1,8 @@
+Description:
+  1) Migrate `star` field to table
+  2) Insert `has_star` into model
+  3) Insert `has_star` into controller
+  4) Insert `has_star` into routes
+
+Examples:
+  `rails generate has_star movie`

@@ -31,6 +31,17 @@ TODO: Write usage instructions
 
 ## Gem
 
+Instal gem extension:
+`gem install gem-release`
+
+Increment version and push to github:
+`gem bump --patch --minor --push --verbose`
+
+Push to rubygems:
+`gem release`
+
+### Manual
+
 Build: gem build has_star.gemspec
 Push:  gem push has_star-x.y.z.gem
 

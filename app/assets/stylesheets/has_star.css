@@ -9,17 +9,17 @@
   }
 }
 
-.has-star {
+a.has-star {
   text-decoration: none;
   color: Orange;
   transition: all 0.5s;
 }
 
-.has-star:hover {
+a.has-star:hover {
   color: DarkOrange;
 }
 
-.has-star:focus {
+a.has-star:focus {
   /*animation: toogle-star-spin 1s infinite ease-in-out;*/
   opacity: 0.5;
   color: silver;

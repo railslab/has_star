@@ -7,7 +7,7 @@ module HasStar
       (model.star? ? starred : unstarred).html_safe
     end
 
-    # html code for solid star
+    # html code for solid star, could be &hearts;
     def starred
       '&#x2605;'
     end

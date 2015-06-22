@@ -2,7 +2,7 @@
 
 rails new has_star_example --skip-test-unit --skip-bundle
 cd has_star_example
-echo "gem 'has_star', git: '/Users/neves/Dropbox/projects/rails/has_star'" >> Gemfile
+echo "gem 'has_star', git: 'git://github.com/railslab/has_star.git'" >> Gemfile
 bundle install
 rails g resource post title --no-helper --no-assets
 
